@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url(FiraCode-Regular.ttf);
+}
+
+body {
+    font-family: 'Fira Code', sans-serif, monospace, serif;
+    background-color: hsl(0, 0%, 10%);
+    color: #ffffffa2;
+    line-height: 1.6;
+     /* Increase this value for more padding */
+    /*padding-right: 20%;*/
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 1.1 rem;
+    padding-top: 10%;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 0.9 rem;
+    /*unbold the h2*/
+    font-weight: normal;
+}
+
+h3 {
+    color: #ffffffd4;
+    font-size: 0.7 rem;
+    margin-bottom: 10px;
+}
+
+h4 {
+    /*italicize the h4*/    
+    font-style: italic;
+    font-size: 0.6 rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+
+
+
+footer {
+    padding: 40px 0;
+    color: #555757;
+}
+
+a {
+    color: #ffffff;;
+    text-decoration: underline dotted;
+}
+
+a:hover {
+    color: #ffffff87;
+}
+
+
+
