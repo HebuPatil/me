@@ -6,91 +6,107 @@
     <meta name="description" content="Your Name - A brief description about yourself">
     <title>Hebu Patil</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add this style to make elements float and move with mouse */
+        .float {
+            transition: transform 0.2s ease-out;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hebu (Heramba) Patil</h1>
-        <h2>Applied and Computational Mathematics @ Caltech</h2>
+        <h1 class="float">Hebu (Heramba) Patil</h1>
+        <h2 class="float">Applied and Computational Mathematics @ Caltech</h2>
         <strong>
-        <a href="https://www.linkedin.com/in/hebupatil/" target="_blank">LinkedIn</a> 
-        <a href="https://github.com/HebuPatil" target="_blank">Github</a>
-        <a href="mailto: hebupatil@gmail.com">Email</a> 
-        <!-- Resume button that downloads resume -->
-        <a href="hpatil_resume.pdf", target="_blank">Resume</a>
+            <div  class="float">
+                <a class="other" href="https://www.linkedin.com/in/hebupatil/" target="_blank" class="float">LinkedIn</a> 
+                <a class="other" href="https://github.com/HebuPatil" target="_blank" class="float">Github</a>
+                <a class="other" href="mailto: hebupatil@gmail.com" class="float">Email</a> 
+                <a class="other" href="hpatil_resume.pdf" target="_blank" class="float">Resume</a>
+            </div>
         </strong>
         <br>
-        <br>
+        
+        <div class="float">
         <section id="about">
             <p>
-            Hi! I am a undergraduate at Caltech exploring academic research in machine learning, mathematics, and economics. My professionals interest lie in  quantitative and equity research as well as financial mathematics.
+            Hi! I am an undergraduate at the California Institute of Technology exploring academic research in machine learning, mathematics, and economics with professional interests in quantitative research. Outside of work I am a collegiate water polo player and poker enthusiast.
             </p>
             
         <br>
         </section>
+        </div>
+        
 
         <section id="experience">
             <br>
-            <h3>Research</h3>
+            <h3 class="float">Research</h3>
           
             <!-- Caltech: RAPID ML -->
-            <div>
+            <div class="float">
               <h4>Caltech - <a href="https://www.ipac.caltech.edu/project/rapid" target="_blank">RAPID ML</a></h4>
-              <p><strong>Machine Learning Researcher </strong>- April 2023 | Present</p>
+              <p><em>Machine Learning Researcher | April 2023 - Now</p></em> 
               <p>Transient identification through autoencoders for the NASA Roman Telescope.</p>
             </div>
             <br>
           
             <!-- University of Washington: EPE ATLAS Experiment -->
-            <div>
-              <h4>University of Washington - <a href="https://phys.washington.edu/events/series/elementary-particle-experiment-epe"> EPE ATLAS Experiment</a></h4>
-              <p><strong>Student Researcher</strong> - June 2022 | June 2023</p>
+            <div class="float">
+              <h4>University of Washington - <a href="https://phys.washington.edu/events/series/elementary-particle-experiment-epe" target="_blank"> EPE ATLAS Experiment</a></h4>
+              <p><em>Student Researcher | June 2022 - June 2023</p></em> 
               <p>Identifying semi-visible dark matter particle jets using Boosted Decision Trees.</p>
             </div>
             <br>
           
             <!-- University of Washington: Sauro Lab -->
-            <div>
-              <h4>University of Washington - <a href="https://sites.google.com/uw.edu/systems-biology-lab/home?authuser=1">Sauro Lab</a></h4>
-              <p><strong>Student Intern</strong> - July 2022 | Feb 2023</p>
+            <div class="float">
+              <h4>University of Washington - <a href="https://sites.google.com/uw.edu/systems-biology-lab/home?authuser=1" target="_blank">Sauro Lab</a></h4>
+              <p><em>Student Intern | July 2022 - Feb 2023</p></em>
               <p>Parameter scanning API for Tellurium biochemical modelling software.</p>
             </div>
           
         </section>
+        <br>
         
-        
-        <section id"coursework">
+        <section class="float" id="coursework">
             <br>
             <h3>Coursework</h3>
             <p>
-                <p>
-                    <span class="underline">CS 155</span> Machine Learning and Data Mining, 
-                    <span class="underline">CS 156a</span> Learning Systems,  
-                    <span class="underline">ACM95ab</span> Complex Analysis, 
-                    <span class="underline">ACM 104</span> Applied Linear Algebra, 
-                    <span class="underline">Ma 3</span> Probability and Statistics, 
-                    <span class="underline">Ma 6ab</span> Discrete Math, 
-                    <span class="underline">CS 2</span> Data Structures and Algorithms, 
-                    <span class="underline">CS 3</span> Software Design
-                </p>
-                
-                <style>
-                    .underline {
-                        text-decoration: underline;
-                    }
-                </style>
-                
+                <span class="underline">CS 155</span> Machine Learning and Data Mining, 
+                <span class="underline">CS 156a</span> Learning Systems,  
+                <span class="underline">ACM95ab</span> Complex Analysis, 
+                <span class="underline">ACM 104</span> Applied Linear Algebra, 
+                <span class="underline">Ma 3</span> Probability and Statistics, 
+                <span class="underline">Ma 6ab</span> Discrete Math, 
+                <span class="underline">CS 2</span> Data Structures and Algorithms, 
+                <span class="underline">CS 3</span> Software Design
             </p>
-            
         </section>
         
-        <section id"skills">
+        <br>
+        <section class="float" id="skills">
             <br>
-            <h3>Skills</h3>
-            <p> Python, C++, C#, PyTorch, TensorFlow
+            <h3 >Skills</h3>
+            <p>Python, C++, C#, PyTorch, TensorFlow</p>
         </section>
-        <footer>
+        <br>
+        <br>
+        <footer class="float">
             <p>2024 &copy; Hebu Patil</p>
         </footer>
+
     </div>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.float').forEach(el => {
+                const moveX = (x - 0.5) * 30;
+                const moveY = (y - 0.5) * 30;
+                el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
