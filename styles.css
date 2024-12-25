@@ -5,14 +5,39 @@
 }
 
 @font-face {
-    font-family: 'Fira Code';
-    src: url(FiraCode-Regular.ttf);
+    font-family: 'Satoshi';
+    src: url(Satoshi-Bold.ttf);
+}
+.social-icons a {
+    font-size: 30px;
+    margin: 10px;
+    margin-left: 0%;
+    margin-top: -100%;
+    color: #8B746D;
+    
+}
+.social-icons a:hover {
+    transform: rotate(15deg);
+    color: #A39D86;
 }
 
+.colored-bullets {
+    list-style-type: disc;
+    padding-left: 1rem;
+    
+}
+  
+.colored-bullets li {
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+
+.colored-bullets li::marker {
+    color: #A39D86; /* Only colors the bullet */
+} 
+
 body {
-    font-family: 'Fira Code', sans-serif, monospace, serif;
-    background-color: hsl(0, 0%, 10%);
-    color: #ffffff7f;
+    font-family: 'Satoshi', sans-serif, monospace, serif;
+    color: #3C3A3C;
     line-height: 1.6;
      /* Increase this value for more padding */
     /*padding-right: 20%;*/
@@ -20,31 +45,42 @@ body {
     padding-right: 17%;
 }
 
+h1, h2, h3, h4 {
+    color: #3C3A3C;
+    margin-bottom: 20px;
+}
+
 h1 {
-    color: #ffffff;
-    font-size: 1.1 rem;
+    font-size: 4rem;
     padding-top: 10%;
+    transition: transform 0.3s ease;
+    
+}
+
+h1:hover {
+    transform: scale(1.5);
 }
 
 h2 {
-    color: #ffffff;
-    font-size: 0.9 rem;
+    font-size: 2rem;
     /*unbold the h2*/
     font-weight: normal;
+    margin-top: -2rem;
 }
 
 h3 {
-    color: #e0e0e04f;
     font-size: 0.7 rem;
     margin-bottom: 10px;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #8B746D;
+    
 }
 
 h4 {
-    /*italicize the h4*/ 
-    color: #ffffff;   
-    font-size: 0.6 rem;
+
     font-weight: bold;
-    
+    margin-bottom: 0px;
 }
 
 .container {
@@ -60,6 +96,12 @@ h4 {
     margin-bottom: 10px;
 }
 
+#about {
+    /* Your styles here */
+    font-size: 1.1rem;
+  }
+
+
 
 
 footer {
@@ -68,13 +110,14 @@ footer {
 }
 
 a {
-    color: #ffffff;
+    color: #8B746D;
     text-decoration: underline dotted 1px;
 }
 
 a:hover {
-    color: #ffffff;
+    color: #A39D86;
 }
+
 
 
 html, body {
@@ -83,7 +126,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(35deg, rgb(25, 40, 49), rgb(34, 47, 55)); /* Your gradient */
+    background: #F2F2F0;/* Your gradient */
     background-size: cover; /* Ensure the gradient covers the entire background */
     background-attachment: fixed; /* Fixes the background so it doesn’t scroll */
     background-repeat: no-repeat; /* Prevents repeating the background */
@@ -93,18 +136,9 @@ body {
 }
 
 
-
-h1 {
-    transition: transform 0.3s ease;
-}
-
-h1:hover {
-    transform: scale(1.5);
-}
-
 .underline {
     display: inline-block;
     padding: 0px 5px; /* Adjust padding to create space between text and border */
-    border: 1px solid #ffffff37; /* Adjust border thickness and color */
+    border: 1px solid #8B746D; /* Adjust border thickness and color */
 
 }
