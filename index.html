@@ -216,39 +216,40 @@
     animate();
 
     function adjustTextSize() {
-  const baseSize = 16;
-  const scaleFactor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-  document.body.style.fontSize = `${baseSize * scaleFactor}px`;
-  
-  const h1Elements = document.getElementsByTagName('h1');
-  const h2Elements = document.getElementsByTagName('h2');
-  const aboutSection = document.getElementById('about');
-  const socialIcons = document.querySelectorAll('.social-icons a');
-  
-  for (let h1 of h1Elements) {
-    h1.style.fontSize = `${baseSize * 4 * scaleFactor}px`;
-  }
-  
-  for (let h2 of h2Elements) {
-    h2.style.fontSize = `${baseSize * 2 *scaleFactor}px`;
-  }
-  
-  if (aboutSection) {
-    aboutSection.style.fontSize = `${baseSize * 1.3 * scaleFactor}px`;
-  }
-  
-  socialIcons.forEach(icon => {
-    icon.style.fontSize = `${baseSize  * 2 *  scaleFactor}px`;
-  });
-}
+        const isMobile = window.innerWidth <= 768;
+        const baseSize = 16;
+        const scaleFactor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        document.body.style.fontSize = `${baseSize * scaleFactor}px`;
+        
+        const h1Elements = document.getElementsByTagName('h1');
+        const h2Elements = document.getElementsByTagName('h2');
+        const aboutSection = document.getElementById('about');
+        const socialIcons = document.querySelectorAll('.social-icons a');
+        
+        for (let h1 of h1Elements) {
+            h1.style.fontSize = `${baseSize * 4 * scaleFactor}px`;
+        }
+        
+        for (let h2 of h2Elements) {
+            h2.style.fontSize = `${baseSize * 2 *scaleFactor}px`;
+        }
+        
+        if (aboutSection) {
+            aboutSection.style.fontSize = `${baseSize * 1.3 * scaleFactor}px`;
+        }
+        
+        socialIcons.forEach(icon => {
+            icon.style.fontSize = `${baseSize  * 2 *  scaleFactor}px`;
+        });
+    }
 
 
+// if not isMobile window.addEventListener('resize', adjustTextSize);
+    window.addEventListener('resize', adjustTextSize);
+    adjustTextSize();
 
 
-
-window.addEventListener('resize', adjustTextSize);
-adjustTextSize(); // Call initially
-</script>
+    </script>
 
 
     

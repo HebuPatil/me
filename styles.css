@@ -153,22 +153,8 @@ body {
         top: 20px;
         width: 100%;
     }
-
-    .container h1 {
-        font-size: 24px; /* Scale down the main heading */
-    }
-
-    .container h2 {
-        margin-top: -20px;
-        font-size: 14px; /* Scale down subheading */
-    }
-    /*scale down about section */
     
-
-    .container h3 {
-        font-size: 12px; /* Scale down subsection headings */
-    }
-
+    
     .float {
         font-size: 12px; /* Scale down general text */
     }
@@ -176,8 +162,33 @@ body {
     /* Optional: Make the social icons smaller */
     .social-icons a {
         font-size: 18px; /* Adjust social icon size */
+        margin-right: 1px !important;
+        margin-left: 1px !important;
     }
+
+    h1 {
+        font-size: 10rem; /* Scale down the main heading */
+    }
+
+    .container h1 {
+        font-size: 10rem; /* Scale down the main heading */
+    }
+
+    .container h2 {
+        margin-top: -20px;
+        font-size: 30px; /* Scale down subheading */
+    }
+    /*scale down about section */
+    
     .container #about {
-        font-size: 14px;
+        margin-top: -15px;
+        font-size: 2rem;
     }
+    .container h3 {
+        font-size: 12px; /* Scale down subsection headings */
+    }
+    #about {
+        font-size: 12px !important;
+    }
+
 }
