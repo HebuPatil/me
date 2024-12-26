@@ -1,2 +1,2 @@
 # me
-personal website
+My Personal Website, built with vanilla HTML, CSS, and JS.
