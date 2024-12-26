@@ -161,22 +161,19 @@ body {
     
     /* Optional: Make the social icons smaller */
     .social-icons a {
-        font-size: 18px; /* Adjust social icon size */
+        font-size: 18px !important; /* Adjust social icon size */
         margin-right: 1px !important;
         margin-left: 1px !important;
     }
 
-    h1 {
-        font-size: 10rem; /* Scale down the main heading */
-    }
 
     .container h1 {
-        font-size: 10rem; /* Scale down the main heading */
+        font-size: 1.5rem !important; /* Scale down the main heading */
     }
 
     .container h2 {
         margin-top: -20px;
-        font-size: 30px; /* Scale down subheading */
+        font-size: 0.8rem !important; /* Scale down subheading */
     }
     /*scale down about section */
     
