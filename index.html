@@ -36,13 +36,13 @@
                 <a href="https://www.linkedin.com/in/hebupatil/" target="_blank" class="float"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/HebuPatil" target="_blank" class="float"><i class="fab fa-github"></i></a>
                 <a href="mailto: hebupatil@gmail.com" class="float"><i class="fas fa-envelope"></i></a>
-                <!--<a href="/me/hpatil_resume.pdf" class="float"><i class="fas fa-file-alt"></i></a>--> 
+                <!--<a href="/me/resume.pdf" class="float"><i class="fas fa-file-alt"></i></a>--> 
             </div>
         </strong>
         </h2>
         <div class="float">
         <section id="about">
-            Hello, i'm Hebu. I am an undergraduate at the California Institute of Technology interested in Machine Learning, Finance, and Math. Outside of work I am a collegiate water polo player and poker enthusiast.
+            Hello, I'm Hebu, an undergraduate at the California Institute of Technology interested in Machine Learning, Finance, and Math. Outside of work I am a collegiate water polo player and poker enthusiast.
             
         <br>
         </section>
@@ -70,18 +70,18 @@
             <ul class="colored-bullets float">
                 <li>
                   <h4><a href="https://www.ipac.caltech.edu/project/rapid" target="_blank">Caltech RAPID ML</a></h4>
-                    <p>Building a deep learning pipeline for transient identification on the NASA Roman Telescope.</i></p>
-                    <a target = "_blank" href="files/SURF Final Report.pdf">View Paper</a>
+                    <p>Building a deep learning pipeline for transient identification on the NASA Roman Telescope. Taylor Lawrence Research Fellow.</i></p>
+                    <i><a target = "_blank" href="files/SURF Final Report.pdf">View Paper</a></i>
                 </li>
                 <li>
                   <h4><a href="https://phys.washington.edu/events/series/elementary-particle-experiment-epe" target="_blank">University of Washington EPE ATLAS Experiment</a></h4>
                   <p>Identifying semi-visible dark matter particle jets using Boosted Decision Trees. Audited PHYS 427. Presented at UW EPE Symposium.</p>
-                    <p><a target="_blank" href="https://github.com/HebuPatil/epe-svj/blob/main/EPE%20SVJ%20Poster%20Hebu.pdf">View Poster</a> - <a target="_blank" href="https://github.com/HebuPatil/epe-phys-427">Labs</a></p>
+                  <i><p><a target="_blank" href="https://github.com/HebuPatil/epe-svj/blob/main/EPE%20SVJ%20Poster%20Hebu.pdf">View Poster</a> - <a target="_blank" href="https://github.com/HebuPatil/epe-phys-427">View Coursework</a></p></i>
                 </li>
                 <li>
                   <h4><a href="https://sites.google.com/uw.edu/systems-biology-lab/home?authuser=1" target="_blank">University of Washington Sauro Lab</a></h4>
                   <p>Implemented parameter scanning API for Tellurium biochemical modelling software.</p>
-                  <p><a target="_blank" href="https://tellurium.readthedocs.io/en/latest/index.html">Library</a></p>
+                  <i><p><a target="_blank" href="https://tellurium.readthedocs.io/en/latest/index.html">View Library</a></p></i>
                 </li>
               </ul>
           
@@ -162,7 +162,7 @@
         }
 
         draw() {
-            ctx.fillStyle = 'rgba(200, 200, 200, 0.6)'; // Increased opacity for particles
+            ctx.fillStyle = `rgba(139, 116, 109, 0.4)`; // Increased opacity for particles
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -191,7 +191,7 @@
 
                 if (distance < connectionDistance) {
                     const opacity = 1 - (distance / connectionDistance);
-                    ctx.strokeStyle = `rgba(50, 50, 50, ${opacity * 0.4})`; // Slightly fainter line color
+                    ctx.strokeStyle = `rgba(139, 116, 109, ${opacity * 0.4})`; // Slightly fainter line color
                     ctx.lineWidth = 1.5; // Slightly thicker lines
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -247,6 +247,23 @@
 // if not isMobile window.addEventListener('resize', adjustTextSize);
     window.addEventListener('resize', adjustTextSize);
     adjustTextSize();
+
+    function setCanvasSize() {
+        const devicePixelRatio = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * devicePixelRatio;
+        canvas.height = window.innerHeight * devicePixelRatio;
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+    }
+
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+    ctx.imageSmoothingEnabled = false;
+    ctx.lineWidth = 0.5; // Experiment with smaller values if 1.5 is too thick
+    ctx.fillStyle = '#8B746D'; // Solid color
+    ctx.strokeStyle = `rgba(139, 116, 109, 0.8)`; // Higher opacity for sharper connections
+
 
 
     </script>
