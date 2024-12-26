@@ -1,2 +1,3 @@
 # me
-My Personal Website, built with vanilla HTML, CSS, and JS.
+My personal website, nothing fancy. <br>
+Built with vanilla HTML, CSS, and JS.
