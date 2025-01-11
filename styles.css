@@ -4,6 +4,28 @@
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0; /* prevents scroll bars */
+  }
+  canvas {
+    display: block;
+  }
+
+::-webkit-scrollbar {
+    width: 10px;
+
+
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #A39D86;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: #8B746D;
+    border-radius: 8px;
+}
+
 @font-face {
     font-family: 'Satoshi';
     src: url(Satoshi-Bold.ttf);

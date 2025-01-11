@@ -30,7 +30,7 @@
     <canvas id="particleCanvas"></canvas>
     <div class="container">
         <h1 class="float">Heramba (Hebu) Patil</h1>
-        <h2 class="float">Computer Science & Economics @ Caltech
+        <h2 class="float">Computer Science @ Caltech
         <strong> 
             <div class=" social-icons">
                 <a href="https://www.linkedin.com/in/hebupatil/" target="_blank" class="float"><i class="fab fa-linkedin"></i></a>
@@ -42,7 +42,7 @@
         </h2>
         <div class="float">
         <section id="about">
-            Hello, I'm Hebu, an undergraduate at the California Institute of Technology interested in Machine Learning, Finance, and Math. Outside of work I am a collegiate water polo player and poker enthusiast.
+            Hello, I'm Hebu, an undergraduate at the California Institute of Technology interested in Machine Learning, Math, and Finance. Outside of work I am a collegiate water polo player and poker enthusiast.
             
         <br>
         </section>
@@ -86,6 +86,17 @@
               </ul>
           
         </section>
+
+        <!--<section id="experience">
+            <br>
+            <h3 class="float">Assorted Projects</h3>
+            <ul class="colored-bullets float">
+                <li>
+                    <h4><a href="https://drive.google.com/file/d/1QKiK8P3Ca-xTzLWJ1LkftGRQ6ilWa0CF/view?usp=sharing" target="_blank">P72 Case Competition Submission</a></h4>
+                </li>
+              </ul>
+          
+        </section>-->
         
         <section class="float" id="coursework">
             <br>
@@ -125,13 +136,7 @@
         });
     </script>
    <script>
-    
-    // Existing mouse move event listener
-    document.addEventListener('mousemove', function(e) {
-        // ... (keep your existing code here)
-    });
 
-    // Particle system
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -157,8 +162,22 @@
             this.x += this.speedX;
             this.y += this.speedY;
 
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            if (this.x - this.size < 0) {
+                this.x = this.size;
+                this.speedX = Math.abs(this.speedX);
+            } else if (this.x + this.size > canvas.width) {
+                this.x = canvas.width - this.size;
+                this.speedX = -Math.abs(this.speedX);
+            }
+
+            // Bounce off top and bottom edges
+            if (this.y - this.size < 0) {
+                this.y = this.size;
+                this.speedY = Math.abs(this.speedY);
+            } else if (this.y + this.size > canvas.height) {
+                this.y = canvas.height - this.size;
+                this.speedY = -Math.abs(this.speedY);
+            }
         }
 
         draw() {
