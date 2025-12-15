@@ -3,294 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hebu's Personal Website">
-    <title>Hebu Patil</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Hebu Patil | Portfolio</title>
     <style>
-        /* Add this style to make elements float and move with mouse */
-        .float {
-            transition: transform 0.2s ease-out;
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent: #2dd4bf; 
         }
-        canvas {
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND GRID --- */
+        #grid-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            z-index: 0;
+            pointer-events: none;
         }
 
+        .tile {
+            animation-name: darkWave;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-duration: var(--ripple-duration, 20s);
+            animation-delay: var(--ripple-delay, 0s);
+        }
+
+        @keyframes darkWave {
+            0%   { background-color: hsla(0, 80%, 8%, 0.6); }   
+            20%  { background-color: hsla(200, 80%, 9%, 0.6); } 
+            40%  { background-color: hsla(270, 80%, 9%, 0.6); } 
+            60%  { background-color: hsla(150, 80%, 8%, 0.6); } 
+            80%  { background-color: hsla(40, 80%, 8%, 0.6); }  
+            100% { background-color: hsla(0, 80%, 8%, 0.6); }   
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding: 4rem 3rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+        }
+
+        /* --- NAVIGATION --- */
+        nav { display: flex; justify-content: flex-end; gap: 20px; margin-bottom: 4rem; font-size: 0.9rem; }
+        nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        nav a:hover { color: var(--accent); }
+
+        /* --- TYPOGRAPHY --- */
+        h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+        .bio { color: var(--text-muted); font-size: 1.2rem; max-width: 800px; }
+        
+        h2 {
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--text-muted); margin-bottom: 1.5rem; margin-top: 4rem;
+            border-bottom: 1px solid rgba(38, 38, 38, 0.5); 
+            padding-bottom: 10px;
+        }
+
+        /* --- ITEMS (Experience / Research) --- */
+        .item { 
+            display: flex; 
+            flex-direction: row; /* Side-by-side layout */
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem; 
+        }
+
+        /* Group title/subtitle/links so they stack on the left */
+        .item-main {
+            flex: 1;
+            padding-right: 2rem; /* Spacing between text and date */
+        }
+        
+        .item-title { 
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            color: var(--text-main); 
+        }
+        
+        .item-subtitle { 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            margin-top: 4px; 
+            line-height: 1.6;
+        }
+
+        /* Styling for the Year Column */
+        .item-date {
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            opacity: 0.6;
+            white-space: nowrap; /* Prevents wrapping */
+            padding-top: 4px; /* Visually align with title */
+        }
+
+        /* Specific style for the 'View Paper' links */
+        .research-links {
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+        .research-link {
+            color: var(--accent); 
+            text-decoration: none;
+            font-style: italic;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+            margin-right: 15px;
+        }
+        .research-link:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        @media (max-width: 800px) {
+            .content-wrapper { padding: 2rem 1.5rem; }
+            /* Stack date below content on mobile */
+            .item { flex-direction: column; }
+            .item-date { margin-top: 5px; }
+        }
     </style>
 </head>
-
-
-
 <body>
-    <canvas id="particleCanvas"></canvas>
-    <div class="container">
-        <h1 class="float">Heramba (Hebu) Patil</h1>
-        <h2 class="float">Computer Science @ Caltech
-        <strong> 
-            <div class=" social-icons">
-                <a href="https://www.linkedin.com/in/hebupatil/" target="_blank" class="float"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/HebuPatil" target="_blank" class="float"><i class="fab fa-github"></i></a>
-                <a href="mailto: hebupatil@gmail.com" class="float"><i class="fas fa-envelope"></i></a>
-                <!--<a href="/me/resume.pdf" class="float"><i class="fas fa-file-alt"></i></a>--> 
-            </div>
-        </strong>
-        </h2>
-        <div class="float">
-        <section id="about">
-            Hello, I'm Hebu, an undergraduate at the California Institute of Technology interested in Machine Learning, Math, and Finance. Outside of work I am a collegiate water polo player and poker enthusiast.
-            
-        <br>
-        </section>
-        </div>
-        
-        <section id="experience">
-            <br>
-            <h3 class="float">Current Work</h3>
-            <ul class="colored-bullets float">
-                <li>
-                    <h4><a href="https://www.paretotechnologies.com/" target="_blank">Pareto Technologies</a></h4>
-                      <p>Developing systematic trend, price-action, and reversion strategies for intraday futures.</i></p>
-                </li>
-                <li>
-                    <h4><a href="https://www.mccormick.northwestern.edu/" target="_blank">Northwestern University</a></h4>
-                      <p>Researching methods for measurement error correction for estimating confounders in causal inference.</i></p>
-                </li>
-              </ul>
-          
-        </section>
 
-        <section id="experience">
-            <br>
-            <h3 class="float">Research</h3>
-            <ul class="colored-bullets float">
-                <li>
-                  <h4><a href="https://www.ipac.caltech.edu/project/rapid" target="_blank">Caltech RAPID ML</a></h4>
-                    <p>Building a deep learning pipeline for transient identification on the NASA Roman Telescope. Taylor Lawrence Research Fellow.</i></p>
-                    <i><a target = "_blank" href="files/SURF Final Report.pdf">View Paper</a></i>
-                </li>
-                <li>
-                  <h4><a href="https://phys.washington.edu/events/series/elementary-particle-experiment-epe" target="_blank">University of Washington EPE ATLAS Experiment</a></h4>
-                  <p>Identifying semi-visible dark matter particle jets using Boosted Decision Trees. Audited PHYS 427. Presented at UW EPE Symposium.</p>
-                  <i><p><a target="_blank" href="https://github.com/HebuPatil/epe-svj/blob/main/EPE%20SVJ%20Poster%20Hebu.pdf">View Poster</a> - <a target="_blank" href="https://github.com/HebuPatil/epe-phys-427">View Coursework</a></p></i>
-                </li>
-                <li>
-                  <h4><a href="https://sites.google.com/uw.edu/systems-biology-lab/home?authuser=1" target="_blank">University of Washington Sauro Lab</a></h4>
-                  <p>Implemented parameter scanning API for Tellurium biochemical modelling software.</p>
-                  <i><p><a target="_blank" href="https://tellurium.readthedocs.io/en/latest/index.html">View Library</a></p></i>
-                </li>
-              </ul>
-          
-        </section>
+    <div id="grid-canvas"></div>
 
-        <!--<section id="experience">
-            <br>
-            <h3 class="float">Assorted Projects</h3>
-            <ul class="colored-bullets float">
-                <li>
-                    <h4><a href="https://drive.google.com/file/d/1QKiK8P3Ca-xTzLWJ1LkftGRQ6ilWa0CF/view?usp=sharing" target="_blank">P72 Case Competition Submission</a></h4>
-                </li>
-              </ul>
-          
-        </section>-->
+    <div class="content-wrapper">
         
-        <section class="float" id="coursework">
-            <br>
-            <h3>Relevant Coursework</h3>
-            <p>
-                <span class="underline">ACM 104</span> Applied Linear Algebra (MATLAB)
-                <span class="underline">Ma 2</span> Differential Equations
-                <span class="underline">Ma 3</span> Probability and Statistics
-                <span class="underline">Ma 6a</span> Discrete Math
-                <span class="underline">EE 150</span> Deep Learning
-                <span class="underline">CS 2</span> Data Structures and Algorithms (Java)
-                <span class="underline">CS 4</span> Functional Programming (Ocaml)
-                <span class="underline">CS 155</span> Machine Learning and Data Mining
-                <span class="underline">CS 156a</span> Learning Systems
-                
+        <nav>
+            <a target="_blank" href="mailto:hpatil@caltech.edu">Email</a>
+            <a target="_blank" href="https://www.linkedin.com/in/hebupatil/">LinkedIn</a>
+            <a target="_blank" href="https://github.com/HebuPatil">GitHub</a>
+        </nav>
+
+        <header>
+            <h1>Hebu Patil</h1>
+            <p class="bio">
+                I am a junior at Caltech studying computer science. Outside of work I play ncaa water polo, am a poker enthusiast, and enjoy sunny california.
             </p>
+        </header>
+
+        <section>
+            <h2>Experience</h2>
+            <div class="item">
+                <div class="item-main">
+                    <div class="item-title">ROW Asset Management</div>
+                    <div class="item-subtitle">Incoming Quantitative Researcher Intern.</div>
+                </div>
+                <div class="item-date">2026</div>
+            </div>
+            <div class="item">
+                <div class="item-main">
+                    <div class="item-title">Saguaro Capital Management</div>
+                    <div class="item-subtitle">Machine Learning Intern. Graph based equity recommendation system.</div>
+                </div>
+                <div class="item-date">2025</div>
+            </div>
+
+            <!-- <div class="item">
+                <div class="item-main">
+                    <div class="item-title">NASA (JPL/Caltech)</div>
+                    <div class="item-subtitle">Research Intern.</div>
+                </div>
+                <div class="item-date">2024</div>
+            </div> -->
         </section>
-        
-        <br>
-        <br>
-        <br>
-        <footer class="float">
-            <p>2024 &copy; Hebu Patil</p>
-        </footer>
 
-    </div>
-    <script>
-        document.addEventListener('mousemove', function(e) {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+        <section>
+            <h2>Research</h2>
+
+            <div class="item">
+                <div class="item-main">
+                    <div class="item-title">Northwestern University</div>
+                    <div class="item-subtitle">
+                        Currently researching techniques for error correction in causal inference.
+                    </div>
+                </div>
+                <div class="item-date">2025</div>
+            </div>
             
-            document.querySelectorAll('.float').forEach(el => {
-                const moveX = (x - 0.5) * 30;
-                const moveY = (y - 0.5) * 30;
-                el.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
+            <div class="item">
+                <div class="item-main">
+                    <div class="item-title">NASA/JPL/Caltech RAPID ML</div>
+                    <div class="item-subtitle">
+                        Deep learning pipeline for image differencing to detect astrophysical transients on the NASA Roman Telescope. Named Taylor Lawrence Research Fellow.
+                    </div>
+                    <div class="research-links">
+                        <a target = "_blank" href="files/SURF Final Report.pdf" class="research-link">View Paper</a>
+                    </div>
+                </div>
+                <div class="item-date">2024</div>
+            </div>
+
+            <div class="item">
+                <div class="item-main">
+                    <div class="item-title">University of Washington EPE ATLAS Experiment</div>
+                    <div class="item-subtitle">
+                        Boosted decision trees to identify semi-visible dark matter particle jets in proton-proton collisions collected by CERN. Audited PHYS 427. Presented at UW EPE Symposium.
+                    </div>
+                    <div class="research-links">
+                        <a target = "_blank" href="https://github.com/HebuPatil/epe-svj/blob/main/EPE%20SVJ%20Poster%20Hebu.pdf" class="research-link">View Poster</a>
+                        <a target = "_blank" href="https://github.com/HebuPatil/epe-phys-427" class="research-link">View Coursework</a>
+                    </div>
+                </div>
+                <div class="item-date">2023</div>
+            </div>
+
+            <div class="item">
+                <div class="item-main">
+                    <div class="item-title">University of Washington Sauro Lab</div>
+                    <div class="item-subtitle">
+                        Implemented parameter scanning API functionality for Tellurium biochemical modelling software.
+                    </div>
+                    <div class="research-links">
+                        <a target = "_blank" href="https://tellurium.readthedocs.io/en/latest/index.html" class="research-link">View Library</a>
+                    </div>
+                </div>
+                <div class="item-date">2022</div>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        const TILE_SIZE = 160; 
+        const gridCanvas = document.getElementById('grid-canvas');
+        
+        function initGrid() {
+            gridCanvas.innerHTML = '';
+            
+            const cols = Math.ceil(window.innerWidth / TILE_SIZE);
+            const rows = Math.ceil(window.innerHeight / TILE_SIZE);
+            gridCanvas.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            
+            const screenCenterX = window.innerWidth / 2;
+            const screenCenterY = window.innerHeight / 2;
+            const maxDist = Math.sqrt(Math.pow(screenCenterX, 2) + Math.pow(screenCenterY, 2));
+
+            for (let i = 0; i < cols * rows; i++) {
+                const div = document.createElement('div');
+                div.classList.add('tile');
+                
+                // --- RANDOMNESS & RIPPLE LOGIC ---
+                const colIdx = i % cols;
+                const rowIdx = Math.floor(i / cols);
+                const tileCenterX = (colIdx * TILE_SIZE) + (TILE_SIZE / 2);
+                const tileCenterY = (rowIdx * TILE_SIZE) + (TILE_SIZE / 2);
+
+                const dist = Math.sqrt(
+                    Math.pow(tileCenterX - screenCenterX, 2) + 
+                    Math.pow(tileCenterY - screenCenterY, 2)
+                );
+
+                let baseDelay = (dist / maxDist) * -10; 
+                const randomOffset = Math.random() * 4;
+                const randomDuration = 18 + (Math.random() * 7);
+
+                div.style.setProperty('--ripple-delay', `${baseDelay + randomOffset}s`);
+                div.style.setProperty('--ripple-duration', `${randomDuration}s`);
+
+                gridCanvas.appendChild(div);
+            }
+        }
+
+        window.addEventListener('load', initGrid);
+        
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(initGrid, 200);
         });
     </script>
-   <script>
-
-    const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const isMobile = window.innerWidth <= 768;
-
-    const particles = [];
-    const particleCount = isMobile ? 30 : 50; // Decreased particle count
-    const connectionDistance = isMobile ? 100: 100; // Maximum distance for connecting particles
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 2; // Increased size for better visibility
-            this.speedX = (Math.random() - 0.5) * 0.5;
-            this.speedY = (Math.random() - 0.5) * 0.5;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.x - this.size < 0) {
-                this.x = this.size;
-                this.speedX = Math.abs(this.speedX);
-            } else if (this.x + this.size > canvas.width) {
-                this.x = canvas.width - this.size;
-                this.speedX = -Math.abs(this.speedX);
-            }
-
-            // Bounce off top and bottom edges
-            if (this.y - this.size < 0) {
-                this.y = this.size;
-                this.speedY = Math.abs(this.speedY);
-            } else if (this.y + this.size > canvas.height) {
-                this.y = canvas.height - this.size;
-                this.speedY = -Math.abs(this.speedY);
-            }
-        }
-
-        draw() {
-            ctx.fillStyle = `rgba(139, 116, 109, 0.4)`; // Increased opacity for particles
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function scaleParticles(oldWidth, oldHeight, newWidth, newHeight) {
-        particles.forEach((particle) => {
-            particle.x = (particle.x / oldWidth) * newWidth;
-            particle.y = (particle.y / oldHeight) * newHeight;
-        });
-    }
-
-    function init() {
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function connectParticles() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < connectionDistance) {
-                    const opacity = 1 - (distance / connectionDistance);
-                    ctx.strokeStyle = `rgba(139, 116, 109, ${opacity * 0.4})`; // Slightly fainter line color
-                    ctx.lineWidth = 1.5; // Slightly thicker lines
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-        }
-        connectParticles();
-        requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    function adjustTextSize() {
-        const isMobile = window.innerWidth <= 768;
-        const baseSize = 16;
-        const scaleFactor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-        document.body.style.fontSize = `${baseSize * scaleFactor}px`;
-        
-        const h1Elements = document.getElementsByTagName('h1');
-        const h2Elements = document.getElementsByTagName('h2');
-        const aboutSection = document.getElementById('about');
-        const socialIcons = document.querySelectorAll('.social-icons a');
-        
-        for (let h1 of h1Elements) {
-            h1.style.fontSize = `${baseSize * 4 * scaleFactor}px`;
-        }
-        
-        for (let h2 of h2Elements) {
-            h2.style.fontSize = `${baseSize * 2 *scaleFactor}px`;
-        }
-        
-        if (aboutSection) {
-            aboutSection.style.fontSize = `${baseSize * 1.3 * scaleFactor}px`;
-        }
-        
-        socialIcons.forEach(icon => {
-            icon.style.fontSize = `${baseSize  * 2 *  scaleFactor}px`;
-        });
-    }
-
-
-// if not isMobile window.addEventListener('resize', adjustTextSize);
-    window.addEventListener('resize', adjustTextSize);
-    adjustTextSize();
-
-    function setCanvasSize() {
-        const devicePixelRatio = window.devicePixelRatio || 1;
-        canvas.width = window.innerWidth * devicePixelRatio;
-        canvas.height = window.innerHeight * devicePixelRatio;
-        canvas.style.width = `${window.innerWidth}px`;
-        canvas.style.height = `${window.innerHeight}px`;
-        ctx.scale(devicePixelRatio, devicePixelRatio);
-    }
-
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
-    ctx.imageSmoothingEnabled = false;
-    ctx.lineWidth = 0.5; // Experiment with smaller values if 1.5 is too thick
-    ctx.fillStyle = '#8B746D'; // Solid color
-    ctx.strokeStyle = `rgba(139, 116, 109, 0.8)`; // Higher opacity for sharper connections
-
-
-
-    </script>
-
-
-    
-
-    
-    
 </body>
 </html>
