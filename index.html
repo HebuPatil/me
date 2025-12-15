@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
     <title>Hebu Patil | Portfolio</title>
     <style>
         /* --- VARIABLES & RESET --- */
@@ -21,6 +21,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.7;
             overflow-x: hidden;
+            /* REMOVED GLOBAL ZOOM - This fixes the black void bug */
         }
 
         /* --- BACKGROUND GRID --- */
@@ -44,19 +45,25 @@
         }
 
         @keyframes darkWave {
-            0%   { background-color: hsla(0, 80%, 8%, 0.6); }   
-            20%  { background-color: hsla(200, 80%, 9%, 0.6); } 
-            40%  { background-color: hsla(270, 80%, 9%, 0.6); } 
-            60%  { background-color: hsla(150, 80%, 8%, 0.6); } 
-            80%  { background-color: hsla(40, 80%, 8%, 0.6); }  
-            100% { background-color: hsla(0, 80%, 8%, 0.6); }   
+            0%   { background-color: hsla(0, 80%, 10%, 0.5); }   
+            20%  { background-color: hsla(200, 80%, 12%, 0.5); } 
+            40%  { background-color: hsla(270, 80%, 12%, 0.5); } 
+            60%  { background-color: hsla(150, 80%, 10%, 0.5); } 
+            80%  { background-color: hsla(40, 80%, 10%, 0.5); }  
+            100% { background-color: hsla(0, 80%, 10%, 0.5); }   
         }
 
         /* --- CONTENT CONTAINER --- */
         .content-wrapper {
             position: relative;
             z-index: 10;
-            max-width: 960px;
+            
+            /* ZOOM APPLIED HERE INSTEAD */
+            zoom: 0.75; 
+            
+            /* UPDATED: Reduced from 1460px to 1100px for a slimmer look */
+            max-width: 1100px; 
+            
             margin: 0 auto;
             min-height: 100vh;
             padding: 4rem 3rem;
@@ -70,7 +77,11 @@
 
         /* --- TYPOGRAPHY --- */
         h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-        .bio { color: var(--text-muted); font-size: 1.2rem; max-width: 800px; }
+        
+        .bio { 
+            color: var(--text-muted); 
+            font-size: 1.2rem; 
+        }
         
         h2 {
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
@@ -79,19 +90,18 @@
             padding-bottom: 10px;
         }
 
-        /* --- ITEMS (Experience / Research) --- */
+        /* --- ITEMS --- */
         .item { 
             display: flex; 
-            flex-direction: row; /* Side-by-side layout */
+            flex-direction: row; 
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 2rem; 
         }
 
-        /* Group title/subtitle/links so they stack on the left */
         .item-main {
             flex: 1;
-            padding-right: 2rem; /* Spacing between text and date */
+            padding-right: 2rem; 
         }
         
         .item-title { 
@@ -107,17 +117,15 @@
             line-height: 1.6;
         }
 
-        /* Styling for the Year Column */
         .item-date {
             font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
             color: var(--text-muted);
             font-size: 0.9rem;
             opacity: 0.6;
-            white-space: nowrap; /* Prevents wrapping */
-            padding-top: 4px; /* Visually align with title */
+            white-space: nowrap; 
+            padding-top: 4px; 
         }
 
-        /* Specific style for the 'View Paper' links */
         .research-links {
             margin-top: 5px;
             font-size: 0.9rem;
@@ -135,8 +143,7 @@
         }
 
         @media (max-width: 800px) {
-            .content-wrapper { padding: 2rem 1.5rem; }
-            /* Stack date below content on mobile */
+            .content-wrapper { padding: 2rem 1.5rem; zoom: 1; max-width: 100%; }
             .item { flex-direction: column; }
             .item-date { margin-top: 5px; }
         }
@@ -166,7 +173,7 @@
             <div class="item">
                 <div class="item-main">
                     <div class="item-title">ROW Asset Management</div>
-                    <div class="item-subtitle">Incoming Quantitative Researcher Intern.</div>
+                    <div class="item-subtitle">Incoming Quantitative Research Intern.</div>
                 </div>
                 <div class="item-date">2026</div>
             </div>
@@ -177,14 +184,6 @@
                 </div>
                 <div class="item-date">2025</div>
             </div>
-
-            <!-- <div class="item">
-                <div class="item-main">
-                    <div class="item-title">NASA (JPL/Caltech)</div>
-                    <div class="item-subtitle">Research Intern.</div>
-                </div>
-                <div class="item-date">2024</div>
-            </div> -->
         </section>
 
         <section>
@@ -244,14 +243,18 @@
     </div>
 
     <script>
-        const TILE_SIZE = 160; 
+        // REDUCED TILE SIZE (160 * 0.75 = 120)
+        // This simulates the "zoomed out" look for the background without breaking the calculation
+        const TILE_SIZE = 120; 
         const gridCanvas = document.getElementById('grid-canvas');
         
         function initGrid() {
             gridCanvas.innerHTML = '';
             
+            // Standard Calculation (Body is 100%, so this works perfectly now)
             const cols = Math.ceil(window.innerWidth / TILE_SIZE);
             const rows = Math.ceil(window.innerHeight / TILE_SIZE);
+            
             gridCanvas.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
             
             const screenCenterX = window.innerWidth / 2;
